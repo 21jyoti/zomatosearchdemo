@@ -149,7 +149,7 @@ public class SearchActivity extends BaseActivity implements SearchInterface {
     }
 
     private void setListAdapter() {
-        if(searchAdapter!=null) {
+        if(searchAdapter==null) {
             searchAdapter = new SearchAdapter(getContext());
             orderList_rv.setAdapter(searchAdapter);
         }else{

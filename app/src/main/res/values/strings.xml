@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ZomatoSearch</string>
     <string name="price">Rs. %1$s FOR TWO</string>
+    <string name="no_data_found">\"No data found!!\\n Please try again\"</string>
 </resources>

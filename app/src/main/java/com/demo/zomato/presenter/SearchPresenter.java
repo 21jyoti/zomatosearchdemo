@@ -26,6 +26,7 @@ import com.demo.zomato.model.ListItem;
 import com.demo.zomato.model.Restaurant;
 import com.demo.zomato.model.Restaurant_;
 import com.demo.zomato.model.SearchResultModel;
+import com.demo.zomatosearch.R;
 
 import org.json.JSONObject;
 
@@ -62,7 +63,7 @@ public class SearchPresenter implements SearchPresenterInterface {
     }
 
     @Override
-    public void callServiceAndGetResponse(String query, int start, int count) {
+    public void callServiceAndGetResponse(String query, final int start, int count) {
         searchListener.showLoader();
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         String URL = EndPoints.SEARCH_API;
@@ -83,6 +84,8 @@ public class SearchPresenter implements SearchPresenterInterface {
                             list = data.getRestaurants();
                             searchListener.setLoading(false);
                             searchListener.updateUIonSuccess(consolidatedList);
+                        }else if(start==0){
+                            searchListener.updateUIonFailure(context.getResources().getString(R.string.no_data_found));
                         }
                     }
                 });
@@ -116,7 +119,7 @@ public class SearchPresenter implements SearchPresenterInterface {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("user-key", "fdefdac405531ef01baeb28ff03bb078");
+                params.put(EndPoints.API_KEY_HEADER, EndPoints.API_KEY);
                 return params;
             }
 
