@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ZomatoSearch</string>
+    <string name="price">Rs. %1$s FOR TWO</string>
+</resources>
